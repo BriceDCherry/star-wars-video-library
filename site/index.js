@@ -5,13 +5,13 @@ main.append(ul)
 fetch("https://swapi.dev/api/films")
     .then((response) => response.json())
     .then((parsedResponse) => {
-        const filmList = parsedResponse.results.map(movie => movie.title)
-        return filmList.forEach(film =>{
+        console.log(parsedResponse.results)
+        const filmList = parsedResponse.results.forEach(film =>{ 
             const li = document.createElement("li")
-            const a = document.createElement("a")
-            a.href = "#"
-            a.textContent = film
-            li.append(a)
+            li.innerHTML = `
+                <a href=#>${film.title}</a> 
+
+            `
             ul.append(li)
          })   
      })
