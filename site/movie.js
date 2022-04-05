@@ -17,6 +17,7 @@ const episodeIdMap = {
 const episodeId = queryParams.get("episode_id")
 const filmId = episodeIdMap[episodeId]
 
+
 fetch(`https://swapi.dev/api/films/${filmId}`)
     .then(response => {
         return response.json()
@@ -30,7 +31,7 @@ fetch(`https://swapi.dev/api/films/${filmId}`)
             </div>
             
             `
-            movieHdr.append(p)
+        movieHdr.append(p)
 
     })
 fetch(`https://swapi.dev/api/films/${filmId}`)
@@ -38,12 +39,22 @@ fetch(`https://swapi.dev/api/films/${filmId}`)
         return response.json()
     }).then(parsedResponse => {
         parsedResponse.characters.forEach(url => fetch(url).then(response => {
-            return response.json()}
+            return response.json()
+        }
         ).then(parsedResponse => {
             const li = document.createElement("li")
             li.textContent = parsedResponse.name
             const ul = document.querySelector("ul")
             ul.append(li)
+
         }))
     })
-fetch(`https://www.omdbapi.com?apikey=e57778af&t=a+new+hope`)
+console.log(parsedResponse.title)
+fetch(`http://www.omdbapi.com/?t=${parsedResponse.title}&apikey=e57778af`)
+    .then(response => {
+        return response.json()
+    }).then(parsedResponse => {
+        const img = document.createElement("img")
+        img.src = parsedResponse.poster
+        body.append(img)
+    })
