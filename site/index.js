@@ -4,14 +4,15 @@ main.append(ul)
 
 fetch("https://swapi.dev/api/films")
     .then((response) => response.json())
-    .then((response) => {
-        const filmList = response.results;
-        const httpRequests = filmList
-            .map(film => film.url)
-            .map(url => {
-                return fetch(url).then(response => response.json())
-            })
-        const result = Promise.all(httpRequests)
-        console.log(result)
-        result.movie.map(result => result.title)
-    })
+    .then((parsedResponse) => {
+        const filmList = parsedResponse.results.map(movie => movie.title)
+        return filmList.forEach(film =>{
+            const li = document.createElement("li")
+            const a = document.createElement("a")
+            a.href = "#"
+            a.textContent = film
+            li.append(a)
+            ul.append(li)
+         })   
+     })
+
