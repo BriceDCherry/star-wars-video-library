@@ -8,14 +8,9 @@ h1> a:hover{
     color: white;
 }
 
-h2{
-    color: white;
-}
-
 body{
     background-color: black;
     color: yellow;
-    padding: 24px;
 }
 
 .movie a{
@@ -31,19 +26,6 @@ body{
 
 }
 
-.movies a{
-    color: yellow;
-    text-decoration: none;
-    font-size: 24px;
-}
-
-.movies a:hover{
+h2{
     color: white;
-}
-
-.movies li{
-    list-style: none;
-}
-.movies li+li{
-    padding-bottom: 4px; 
 }

@@ -3,6 +3,7 @@ const main = document.querySelector("main")
 const url = new URL(window.location)
 const queryString = window.location.search
 const queryParams = new URLSearchParams(queryString)
+const movieHdr = document.querySelector(".movie")
 
 console.log(queryString)
 
@@ -15,19 +16,16 @@ fetch(`https://swapi.dev/api/films/${queryParams.get("episode_id")}`)
             <div class ="movie">
                 <a href="movie.html?movie=movie-id-goes-here">${parsedResponse.title}</a>
                 <time>${parsedResponse.release_date.substring(0, 4)}</time>
-                
-
-
+                <div class = "crawl" >${parsedResponse.opening_crawl}</div>
             </div>
             
             `
-        main.append(p)
+            movieHdr.append(p)
 
     })
 fetch(`https://swapi.dev/api/films/${queryParams.get("episode_id")}`)
     .then(response => {
         return response.json()
-
     }).then(parsedResponse => {
         parsedResponse.characters.forEach(url => fetch(url).then(response => {
             return response.json()}

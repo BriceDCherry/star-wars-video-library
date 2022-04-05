@@ -1,6 +1,8 @@
 const main = document.querySelector("main");
 const ul = document.querySelector("ul");
 main.append(ul)
+console.log("hello")
+
 
 fetch("https://swapi.dev/api/films")
     .then((response) => response.json())
