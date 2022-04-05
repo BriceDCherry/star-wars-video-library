@@ -1,5 +1,5 @@
 const main = document.querySelector("main");
-const ul = document.createElement("ul");
+const ul = document.querySelector("ul");
 main.append(ul)
 
 fetch("https://swapi.dev/api/films")
@@ -9,7 +9,7 @@ fetch("https://swapi.dev/api/films")
         const filmList = parsedResponse.results.forEach(film =>{ 
             const li = document.createElement("li")
             li.innerHTML = `
-                <a href=#>${film.title}</a> 
+                <a href="movie.html?${film.episode_id}">${film.title}</a> 
 
             `
             ul.append(li)
