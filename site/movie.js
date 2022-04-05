@@ -6,8 +6,18 @@ const queryParams = new URLSearchParams(queryString)
 const movieHdr = document.querySelector(".movie")
 
 console.log(queryString)
+const episodeIdMap = {
+    4: 1,
+    5: 2,
+    6: 3,
+    1: 4,
+    2: 5,
+    3: 6,
+}
+const episodeId = queryParams.get("episode_id")
+const filmId = episodeIdMap[episodeId]
 
-fetch(`https://swapi.dev/api/films/${queryParams.get("episode_id")}`)
+fetch(`https://swapi.dev/api/films/${filmId}`)
     .then(response => {
         return response.json()
     }).then(parsedResponse => {
@@ -23,7 +33,7 @@ fetch(`https://swapi.dev/api/films/${queryParams.get("episode_id")}`)
             movieHdr.append(p)
 
     })
-fetch(`https://swapi.dev/api/films/${queryParams.get("episode_id")}`)
+fetch(`https://swapi.dev/api/films/${filmId}`)
     .then(response => {
         return response.json()
     }).then(parsedResponse => {
@@ -36,3 +46,4 @@ fetch(`https://swapi.dev/api/films/${queryParams.get("episode_id")}`)
             ul.append(li)
         }))
     })
+fetch(`https://www.omdbapi.com?apikey=e57778af&t=a+new+hope`)
